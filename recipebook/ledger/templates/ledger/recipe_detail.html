@@ -1,16 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>{{ name }}</title>
+    <title>{{ recipe.name }}</title>
 </head>
 <body>
-    <h1>Recipe Book</h1>
-    <h2>{{ name }} Ingredients</h2>
+    <h1>{{ recipe.name }}</h1>
     <ul>
-        {% for ingredient in ingredients %}
-            <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+        {% for recipeingredient in recipe.recipeingredient_set.all %}
+            <li>{{ recipeingredient.quantity }} - {{ recipeingredient.ingredient.name }}</li>
         {% endfor %}
     </ul>
-    <a href="/recipes/list">Back to Recipe List</a>
+    <a href="{% url 'recipe-list' %}">Back to recipes</a>
 </body>
 </html>
