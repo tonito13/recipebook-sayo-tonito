@@ -1,0 +1,17 @@
+{% extends 'base.html' %}  
+
+{% block title %}Recipe List{% endblock %}
+
+{% block content %} 
+
+    {% if request.user.is_authenticated %}
+    <h1>Welcome {{request.user.username}} </h1>
+    {% endif %}
+    <ul>
+        {% for recipe in object_list %}
+            <li>
+                <a href="{{ recipe.get_absolute_url }}"><strong>{{ recipe.name }}</strong></a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %} 
